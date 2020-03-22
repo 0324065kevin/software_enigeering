@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<div class="card">
+  <div class="card-body">
+    <table width="100%">
+      <tr>
+        <td align="center" valign="center">
+          <h3>討論區 </h3>
+            {% if user.is_authenticated %}
+
+                <br>
+                <a href="/message/create">新增留言</a>
+            {% else %}
+            {% endif %}
+
+        </td>
+      </tr>
+    </table>
+<ul>
+  {% for message in messages %}
+  <li>{{ message.user.username }}:
+          <br>
+          <div class="card" style="width: 70rem;height:  5rem;">
+            <div class="card-body">
+              <p class="card-text">
+                <a name= "{{ message.id }}/">{{ message.content }}
+                {% if user.is_authenticated and user.id == message.user.id %}
+{#                <a href="delete/{{ message2.id }}/">刪除</a>#}
+{#                <a href="edit/{{ message2.id }}/">修改</a>#}
+                    </a></p>
+                    <a href="/message/delete/{{ message.id }}/" type="submit" value="&emsp;刪除&emsp;">&emsp;刪除&emsp;</a>
+                    <a href="/message/edit/{{ message.id }}/" type="submit" value="&emsp;修改&emsp;">&emsp;修改&emsp;</a>
+                {% endif %}
+{#                {{ message2.user.username }}#}
+{#                <a name= "{{ message2.id }}/">{{ message2.content }}</a>#}
+            {% endfor %}
+            </div>
+          </div>
+{#    {{ message2.publication_date }}#}
+{#  <br>#}
+{#    {% if user.is_authenticated and user.id == message2.user.id %}#}
+{#      <a href="delete/{{ message2.id }}/">刪除</a>#}
+{#      <a href="edit/{{ message2.id }}/">修改</a>#}
+{#    {% endif %}#}
+{#    {{ message2.user.username }}#}
+{#    <a name= "{{ message2.id }}/">{{ message2.content }}</a>#}
+{#  </li>#}
+{#  {% endfor %}#}
+{#</ul>#}
+{% endblock %}

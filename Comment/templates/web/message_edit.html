@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br><br><br>
+    <script type="text/javascript" src="tools.js"></script>
+             <style>
+             #box {
+             width: 800px;
+             margin: 0 auto;
+             }
+             textarea {
+             width: 800px;
+             }
+             /*
+             #li {
+             display: block;
+             border-bottom: 1px dashed #ebebeb;
+             margin: 10px 0;
+             padding: 8px 0;
+             }
+             */
+             </style>
+             </head>
+             <body>
+
+<br>
+
+             <div id="box">
+             <h3>修改留言 </h3>
+             <br>
+
+             <p class="card-text">內容：</p>
+                 <form action="{% url 'Comment:message/edit' message.id %}" method="post">
+                 {% csrf_token %}
+                     <textarea cols="50" rows="5" name="content" >{{ message.content }}</textarea>
+{#                 <input type="text" width="1000px" height="48" name="content" value="{{ message.content }}">#}
+                                  <br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+                 <input type="submit" value="&emsp;送出&emsp;" />
+             </form>
+
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+              </main>
+{#<form action="{% url 'Comment:message/edit' message.id %}" method="post">#}
+{# {% csrf_token %}#}
+{#請輸入內容:#}
+{#   <textarea cols="50" rows="5" name="content" value="{{ message2.content }}">#}
+{#   </textarea>#}
+{#    <input type="text" name="content" value="{{ message.content }}">#}
+{# <input type="submit" value="送出" />#}
+{#</form>#}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+/*test*/
+.Desc {
+    padding: 15px;
+    text-align: center;
+    font-weight:bold;
+    color: white;
+   }
+   img {
+    border-radius: 60%;
+    width: 55px;
+    height: 50px;
+   }
+
+.pic{
+    border-radius: 60%;
+    width: 55px;
+    height: 50px;
+   }
+
+.contentbox {
+    border:20px solid #000;
+    width:250px;
+    height:150px;
+    margin:20px;
+    padding:10px;
+    background-color:#C39;
+    display:inline-block;
+      vertical-align:top;
+    text-align:center;
+      line-height:75px;
+    box-sizing:border-box;
+}
+
+
+   

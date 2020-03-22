@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+    <br>
+    <!--新增留言區-->
+             <script type="text/javascript" src="tools.js"></script>
+             <style>
+             #box {
+             width: 800px;
+             margin: 0 auto;
+             }
+             textarea {
+             width: 800px;
+             }
+             /*
+             #li {
+             display: block;
+             border-bottom: 1px dashed #ebebeb;
+             margin: 10px 0;
+             padding: 8px 0;
+             }
+             */
+             </style>
+             </head>
+             <body>
+
+<br>
+
+             <div id="box">
+             <h3>發表留言 </h3>
+             <br>
+
+             <p class="card-text">內容：</p>
+                 <form action="{% url 'Comment:message/create' %}" method="post">
+                 {% csrf_token %}
+                 <textarea cols="50" rows="5" name="content"></textarea>
+                                  <br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+                 <input type="submit" value="&emsp;送出&emsp;" />
+             </form>
+
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+              </main>
+{#<div class="card">#}
+{#  <div class="card-body">#}
+{#    <table width="100%">#}
+{#      <tr>#}
+{#        <td align="center" valign="center">#}
+{#          <h3>討論區 </h3>#}
+{#            {% if user.is_authenticated %}#}
+{#                使用者：{{ user.username }}#}
+{#                <br>#}
+{#                <br>#}
+{#                <a href="/message/create">新增留言</a>#}
+{#                <a href="http://127.0.0.1:8000/logout/">登出</a>#}
+{#            {% else %}#}
+{#            {% endif %}#}
+{##}
+{#        </td>#}
+{#      </tr>#}
+{#    </table>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+
+{#<form action="{% url 'Comment:message/create' %}" method="post">#}
+{# {% csrf_token %}#}
+{#請輸入內容:#}
+{#   <textarea cols="50" rows="5" name="content">#}
+{#   </textarea>#}
+{#     <input type="text" name="content">#}
+{# <input type="submit" value="送出" />#}
+{#</form>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+              <div class="container-fluid">
+                  <div class="row no-gutter">
+                    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+                
+                    <div class="col-md-8 col-lg-6">
+                      <div class="login d-flex align-items-center py-5">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                              <h3 class="login-heading mb-4">會員登入</h3>
+                              <form action="." METHOD="post">
+                                  {%  csrf_token %}
+                                <div class="form-label-group">
+                                  <input type="account" name="inputaccount" id="inputaccount" class="form-control" placeholder="帳號" required >
+                                  <label for="inputaccount">帳號</label>
+                                </div>
+                
+                                <div class="form-label-group">
+                                  <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="密碼" required>
+                                  <label for="inputPassword">密碼</label>
+                                </div>
+                
+                            
+                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">登入</button>
+                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="register" onclick="location.href='http://127.0.0.1:8000/register'">註冊</button>
+{#                                  <input type="hidden" name="next" value="/register/" onclick="location.href='http://127.0.0.1:8000/register'"/>#}
+                                <div class="text-center">
+                                  <a class="small" href="#"></a></div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+    {% endblock %}

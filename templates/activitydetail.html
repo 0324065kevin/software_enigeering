@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+            <div class="card">
+                    <div class="card-body">
+                           <table width="100%">     
+                                       <tr><td align="center" valign="center">  
+                                           
+                                         </td></tr>
+                              </table>
+              
+             <br>
+             <br>
+            
+       
+            <!--新增留言區-->
+             <script type="text/javascript" src="tools.js"></script>
+             <style>
+             #box {
+             width: 800px;
+             margin: 0 auto;
+             }
+             textarea {
+             width: 800px;
+             }
+             /*
+             #li {
+             display: block;
+             border-bottom: 1px dashed #ebebeb;
+             margin: 10px 0;
+             padding: 8px 0;
+             }
+             */
+             </style>
+             </head>
+             <body>
+            
+
+             <div id="box">
+             <h3>活動名稱 </h3>
+             <hr class="my-4">
+             <div class="card-body">
+                <table  border="5" cellpadding="5"   width="100%">
+                        <tr> 
+                            <th align = "center">活動名稱</th><td >{{ activities.title }}</td>
+                        </tr>
+                        <tr> 
+                            <th align = "center">活動時間</th><td >{{ activities.period }}</td>
+                        </tr>
+                        <tr>
+                            <th align = "center">活動城市</th><td >{{ activities.city }}</td>
+                        </tr>
+                        <tr> 
+                            <th align = "center">活動場地</th><td >{{ activities.locationName }}</td>
+                        </tr>
+                        <tr> 
+                            <th align = "center">活動類型</th><td>{{ activities.category }}</td>
+                        </tr>
+                        <tr> 
+                            <th align = "center">活動網址</th><td >{{ activities.sourceWebPromote }}</td>
+                        </tr>
+                        <tr> 
+                            <th align = "center">票價</th><td >{{ activities.price }}</td>
+                        </tr>
+                        <tr> 
+                            <th align = "center">簡介</th><td >{{ activities.descriptionFilterHtml }}</td>
+                        </tr>
+
+                    </table>
+          
+            
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             </div>
+             </div>
+             </body>
+                    </div>
+            </div>
+
+</body>
+</html>
+{% endblock %}

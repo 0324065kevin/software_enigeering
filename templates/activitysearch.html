@@ -1,0 +1,161 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+    <div class="container">
+        <br>
+        <br>
+        <div class="card-body">
+            <table border="0" cellpadding="5" width="100%">
+
+                <form action='/activity/activitysearch/' method="post"> {% csrf_token %}
+                    活動名稱：<input type="text" name="q1" style="width:150px" autocomplete="off" autofocus value="{{ request.POST.q1 }}">&emsp;
+                    活動日期：<input type="date" name="q2" style="width:150px" autocomplete="off" value="{{ request.POST.q2 }} " required>&emsp;
+                    縣市名稱：<input list="cities" name="q3" style="width:150px"  autocomplete="off" value="{{ request.POST.q3 }}">&emsp;
+
+
+                    <datalist id="cities">
+                        <option value="新北市">
+                        <option value="臺北市">
+                        <option value="桃園市">
+                        <option value="新竹市">
+                        <option value="苗栗縣">
+                        <option value="嘉義市">
+                        <option value="嘉義縣">
+                        <option value="基隆市">
+                        <option value="宜蘭縣">
+                        <option value="屏東市">
+                        <option value="屏東縣">
+                        <option value="彰化縣">
+                        <option value="新竹縣">
+                        <option value="桃園市">
+                        <option value="桃園縣">
+                        <option value="澎湖縣">
+                        <option value="臺中市">
+                        <option value="臺南市">
+                        <option value="臺東縣">
+                        <option value="花蓮市">
+                        <option value="花蓮縣">
+                        <option value="連江縣">
+                        <option value="金門縣">
+                        <option value="雲林縣">
+                        <option value="高雄市">
+                    </datalist>
+
+                    活動類型：<input list="activitytype" name="q4" style="width:150px" autocomplete="off" value="{{ request.POST.q4 }}">&nbsp;
+                    <datalist id="activitytype">
+                        <option value="展覽">
+                        <option value="演講">
+                        <option value="舞蹈">
+                        <option value="音樂">
+                        <option value="家庭">
+                    </datalist>
+                    <!--
+                    &emsp;收費： &emsp;
+                    <input type="radio" name="charge" value="yes" checked>是 &emsp;&emsp;    
+                    <input type="radio" name="charge" value="no">否
+                    -->
+                    <input type="submit" value="&emsp;搜尋&emsp;">
+                </form>
+                <br>
+                <br>
+
+                 {% if request.user.is_authenticated %}
+                <tr>
+                    <th align="center">時間</th>
+                    <th align="center">活動名稱</th>
+                    <th width="10%" align="center">類別 </th>
+                    {% if user.is_authenticated %}
+                    <th align="center">加入最愛</th>
+                    {% endif %}
+                </tr>
+
+                {% for activity in activities %}
+                    <tr>
+                        <td align="left"><a href="/activity/detail/{{ activity.id }}"
+                                            style="color:black; text-decoration:none;">{{ activity.period }}</a>
+                        </td>
+                        <td align="left"><a href="/activity/detail/{{ activity.id }}"
+                                            style="color:black; text-decoration:none;">{{ activity.title }}</a></td>
+                        <td align="left"><a href="/activity/detail/{{ activity.id }}"
+                                            style="color:black; text-decoration:none;">{{ activity.category }}</a>
+                        </td>
+                        <td>
+                            <a onclick="collect({{ activity.id }})">
+                                <img src="https://image.flaticon.com/icons/svg/148/148836.svg" width="25"
+                                     height="25">
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                    <th align="center">時間</th>
+                    <th align="center">活動名稱</th>
+                    <th width="10%" align="center">類別</th>
+
+
+
+                </tr>
+
+                {% for activity in activities %}
+                    <tr>
+                        <td align="left"><a href="/activity/detail/{{ activity.id }}"
+                                            style="color:black; text-decoration:none;">{{ activity.period }}</a>
+                        </td>
+                        <td align="left"><a href="/activity/detail/{{ activity.id }}"
+                                            style="color:black; text-decoration:none;">{{ activity.title }}</a></td>
+                        <td align="left"><a href="/activity/detail/{{ activity.id }}"
+                                            style="color:black; text-decoration:none;">{{ activity.category }}</a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+
+
+
+
+                </td></tr>
+            </table>
+        </div>
+    <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+        <script>
+            function collect(id) {
+                console.log(id)
+                $.ajax({
+                    type: "GET",
+                    {#data: {'id': $(this).attr("id")}#}
+                    url: "/activity/collect/" + id,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.success)
+                    }
+                })
+            }
+
+            function detail(id) {
+                $.ajax({
+                    type: "GET",
+                    url: "/activity/detail/" + id,
+                    dataType: 'json',
+                    success: function (data) {
+
+                    }
+                })
+            }
+
+        </script>
+    {% endblock %}
